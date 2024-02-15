@@ -1,25 +1,18 @@
-import logo from './logo.svg';
+import Navbar from './Navbar/navbar.js'; // Corrected path
+import Form from './Form/form.js'; // Corrected path
+import Footer from './Footer/footer.js'; // Corrected path
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Navbar />
+      <Form />
+      {/* You can place other components or content here */}
+      <Footer />
     </div>
   );
 }
+
 
 export default App;
