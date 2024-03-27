@@ -5,12 +5,14 @@ import { DatePicker } from "react-date-picker";
 
 
 function App() {
-  const [firstName, setFirstName] = useState("");
+  const [CompanyName, setCompanyName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
+  const [TimePeriod, setTimePeriod] = useState("");
  
   const [Trade, setTrade] = useState("");
+  const [Wages, setWages] = useState("");
   const [idProof, setIdProof] = useState(null);
 
   const [setDate] = useState("");
@@ -22,13 +24,13 @@ function App() {
 
   const clear= () => {
     
-    clearForm(setFirstName, setLastName, setEmail, setPhoneNumber, setTrade);
+    clearForm(setCompanyName, setLastName, setEmail, setPhoneNumber, setTrade, setTimePeriod);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (firstName && lastName && email && Trade !== "") {
+    if (CompanyName && lastName && email && Trade !== "") {
       alert("Please upload a valid ID proof.");
     } else {
       alert("Please fill out all details.");
@@ -42,7 +44,7 @@ function App() {
 
   const getIsFormValid = () => {
     return (
-      firstName && validateEmail(email) && phoneNumber && Trade !== "Trade"
+      CompanyName && validateEmail(email) && phoneNumber && Trade !== "Trade"
     );
   };
 
@@ -50,27 +52,27 @@ function App() {
     <div className="App">
       <form onSubmit={handleSubmit}>
         <fieldset>
-          <h2>Employee Registration Form</h2>
+          <h2>Company Registration Form</h2>
           <div className="Field">
             <label>
-              First name <sup>*</sup>
+              Company name <sup>*</sup>
             </label>
             <input
-              value={firstName}
+              value={CompanyName}
               onChange={(e) => {
-                setFirstName(e.target.value);
+                setCompanyName(e.target.value);
               }}
-              placeholder="First name"
+              placeholder="Company name"
             />
           </div>
           <div className="Field">
-            <label>Last name</label>
+            <label>Owner <sup>*</sup></label>
             <input
               value={lastName}
               onChange={(e) => {
                 setLastName(e.target.value);
               }}
-              placeholder="Last name"
+              placeholder="Owner name"
             />
           </div>
           <div className="Field">
@@ -99,24 +101,52 @@ function App() {
             />
           </div>
 
+
           <div className="Field">
+            <label>
+              Time Period <sup>*</sup>
+            </label>
+            <input
+              value={TimePeriod}
+              onChange={(e) => {
+                setTimePeriod(e.target.value);
+              }}
+              placeholder="Enter time period"
+            />
+          </div>
+
+          {/* <div className="Field">
             <label>
               Date <sup>*</sup>
             </label>
             <input type="date" onChange={handleChange} ref={dateInputRef} />
-          </div>
+          </div> */}
 
           <div className="Field">
             <label>
-              Trade <sup>*</sup>
+              Required Trade <sup>*</sup>
             </label>
             <select value={Trade} onChange={(e) => setTrade(e.target.value)}>
               <option disabled value="">
-                Select your trade
+                Select required trade
               </option>
               <option value="Painter">Painter</option>
               <option value="Plumber">Plumber</option>
               <option value="Fitter">Fitter</option>
+            </select>
+          </div>
+
+          <div className="Field">
+            <label>
+              Minimum Wages <sup>*</sup>
+            </label>
+            <select value={Wages} onChange={(e) => setWages(e.target.value)}>
+              <option disabled value="">
+                Select Minimum Wages
+              </option>
+              <option value="Rs.5000-Rs.7000">Rs.5000-Rs.7000</option>
+              <option value="Rs.7000-Rs.9000">Rs.7000-Rs.9000</option>
+              <option value="Rs.9000-Rs.12000">Rs.9000-Rs.12000</option>
             </select>
           </div>
 
